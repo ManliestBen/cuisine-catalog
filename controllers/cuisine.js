@@ -3,7 +3,8 @@ var Cuisine = require('../models/cuisine');
 module.exports = {
     new: newCuisine,
     create,
-    index
+    index,
+    show
 }
 
 
@@ -25,5 +26,11 @@ function create(req, res) {
 function index(req, res) {
     Cuisine.find({}, function(err, cuisine) {
         res.render('cuisine/index', {title: 'Cuisine List', cuisine});
+    });
+}
+
+function show(req, res) {
+    Cuisine.findById(req.params.id, function(err, cuisine){
+        res.render('cuisine/show', {title: 'Cuisine Details', cuisine})
     });
 }

@@ -33,5 +33,10 @@ table td {
   min-width: 100px;
 }
 
+.details-bold {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 
 
