@@ -19,5 +19,8 @@
     <%= cuisine.ingredients.map(i => i).join(', ') %>
     <div class="details-bold">Recipe Link:</div>
     <div><%= cuisine.recipeUrl %></div>
+    <form action="/cuisine/update/<%= cuisine._id %>">
+        <button type="submit" class="btn btn-warning">Edit</button>
+    </form>
 </body>
 </html>
