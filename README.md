@@ -6,8 +6,8 @@
 ## Below, you'll find a step-by-step walkthrough for writing the application from start to finish.  Here are a few tips to help maximize takeaways from each repetition:
 ## - Type out the functions by hand instead of copying and pasting them.  
 ## - Test the functionality of your code at every available opportunity and debug if something isn't working properly.  If you wait to debug your code until you've written half of it, you'll find it much more difficult to track down errors.
-## - Once you've been through the code a time or two, [switch to this guide](https://github.com/ManliestBen/cuisine-catalog/blob/master/medium-difficulty.md "More Challenging Version") which will provide instructions, but minimal code.
-## - Once you're even more comfortable, try [using this guide](https://github.com/ManliestBen/cuisine-catalog/blob/master/tough-difficulty.md "Most Challenging Version") which will provide instructions, but no code.
+## - Once you've been through the code a time or two, [switch to this guide](https://github.com/ManliestBen/cuisine-catalog/blob/master/medium-difficulty.md "More Challenging Version") which will provide instructions, but less detail.
+## - Once you're even more comfortable, try [using this guide](https://github.com/ManliestBen/cuisine-catalog/blob/master/tough-difficulty.md "Most Challenging Version") which will provide instructions, but zero code.
 ## <br><br>
 # Step-By-Step Instructions (with full code):
 ## <br>
