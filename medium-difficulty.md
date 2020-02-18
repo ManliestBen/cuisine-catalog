@@ -1,31 +1,14 @@
-# Cuisine Catalog
-## This simple application demonstrates basic CRUD functionality using Node, Express, and MongoDB.
-## 
-## One of the best ways to practice putting all the pieces of a MEN-stack app together is by coding a simple example over and over.
-## 
-## Below, you'll find a step-by-step walkthrough for writing the application from start to finish.  Here are a few tips to help maximize takeaways from each repetition:
-## - Type out the functions by hand instead of copying and pasting them.  
-## - Test the functionality of your code at every available opportunity and debug if something isn't working properly.  If you wait to debug your code until you've written half of it, you'll find it much more difficult to track down errors.
-## - Once you've been through the code a time or two, [switch to this guide](https://github.com/ManliestBen/cuisine-catalog/blob/master/medium-difficulty.md "More Challenging Version") which will provide instructions, but minimal code.
-## - Once you're even more comfortable, try [using this guide](https://github.com/ManliestBen/cuisine-catalog/blob/master/tough-difficulty.md "Most Challenging Version") which will provide instructions, but no code.
-## <br><br>
-# Step-By-Step Instructions (with full code):
+# Step-By-Step Instructions (with some code):
 ## <br>
 ### Step 1:  Navigate to the parent directory where you want to create your app.  Use the express generator to create your app's skeleton:
 ```
 express -e cuisine-catalog
 ```
 ### <br>
-### Step 2: Navigate into the directory and open in VS Code:
-```
-cd cuisine-catalog
-code .
-```
+### Step 2: Navigate into the directory and open in VS Code.
+
 ### <br>
-### Step 3:  Open a terminal in VS Code.  Change the name of app.js to server.js:
-```
-mv app.js server.js
-```
+### Step 3:  Open a terminal in VS Code.  Change the name of app.js to server.js.
 ### <br>
 ### Step 4:  Adjust the /bin/www file to reflect those changes so that your server will start properly:
 ```js
@@ -33,11 +16,8 @@ mv app.js server.js
 var app = require('../server');
 ```
 ### <br>
-### Step 5:  Create directories for the model, controller, database (config), and views, then add the corresponding files within each:
-```
-mkdir config models controllers views/cuisine
-touch models/cuisine.js controllers/cuisine.js config/database.js 
-```
+### Step 5:  Create directories for the model, controller, database (config), and views, then add the corresponding files within each.  (views/cuisine models/cuisine.js controllers/cuisine.js config/database.js)
+
 ### <br>
 ### Step 6:  Install node modlues and mongoose using npm:
 ```
@@ -45,10 +25,8 @@ npm install
 npm install mongoose
 ```
 ### <br>
-### Step 7:  Split the terminal at the bottom of VS Code to open a second window for monitoring the server.  Start the server using nodemon and test it out:
-```
-nodemon
-```
+### Step 7:  Split the terminal at the bottom of VS Code to open a second window for monitoring the server.  Start the server using nodemon and test it out.
+
 ### When you browse to 'localhost:3000' you should see the generic express template.
 ## <br>
 ### Step 8:  Configure the database connection in database.js:
@@ -66,12 +44,12 @@ db.on('connected', function() {
 });
 ```
 ### <br>
-### Step 9:  Require the database in server.js:
+### Step 9:  Require the database in the server:
 ```js
 require('./config/database');
 ```
 ### <br>
-### Step 10:  Define the schema in model.js:
+### Step 10:  Define the schema in the model:
 ```js
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -90,12 +68,9 @@ var cuisineSchema = new Schema({
 module.exports = mongoose.model('Cuisine', cuisineSchema);
 ```
 ### <br>
-### Step 11:  Use the terminal to rename users.js --> cuisine.js:
-```
-mv routes/users.js routes/cuisine.js
-```
+### Step 11:  Use the terminal to rename users.js --> cuisine.js.
 ### <br>
-### Step 12:  Adjust server.js to reflect the changes from the previous step:
+### Step 12:  Adjust the server to reflect the changes from the previous step:
 ```js
 // Change var userRouter = require('./routes/user'); to:
 var cuisineRouter = require('./routes/cuisine');
@@ -103,7 +78,7 @@ var cuisineRouter = require('./routes/cuisine');
 app.use('/cuisine', cuisineRouter);
 ```
 ### <br>
-### Step 13:  Configure your router in cuisine.js and define a route to create a new cuisine:
+### Step 13:  Configure your router and define a route to create a new cuisine:
 ```js
 var express = require('express');
 var router = express.Router();
@@ -114,7 +89,7 @@ router.get('/new', cuisineCtrl.new);
 module.exports = router;
 ```
 ### <br>
-### Step 14:  Add the controller in controllers/cuisine.js:
+### Step 14:  Add the controller:
 ```js
 var Cuisine = require('../models/cuisine');
 
@@ -127,12 +102,9 @@ function newCuisine(req, res) {
 }
 ```
 ### <br>
-### Step 15:  Create a view page for adding a cuisine:
-```
-touch views/cuisine/new.ejs
-```
+### Step 15:  Create a 'new' view page.
 ### <br>
-### Step 16:  Create a form within new.ejs for the user to add an item:
+### Step 16:  Create a form within the 'new' view for the user to add an item:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -189,12 +161,12 @@ touch views/cuisine/new.ejs
 }
 ```
 ### <br>
-### Step 18:  Define the POST route in routes/cuisine.js:
+### Step 18:  Define the POST route:
 ```js
 router.post('/', cuisineCtrl.create);
 ```
 ### <br>
-### Step 19:  Create a controller for the route in controllers/cuisine.js:
+### Step 19:  Create a controller for the route:
 ```js
 module.exports = {
     new: newCuisine,
@@ -218,12 +190,12 @@ function create(req, res) {
 ### Step 20:  Navigate to 'localhost:3000/new' in your browser.  Fill out the fields and hit the 'Add' button.  Check to make sure the POST request shows up in the terminal currently running the server:
 ![new-post](public/images/new-post.png)
 ### <br>
-### Step 21:  Define a route for the index page in routes/cuisine.js:
+### Step 21:  Define a route for the index page.
 ```js
 router.get('/', cuisineCtrl.index);
 ```
 ### <br>
-### Step 22:  Add the corresponding controller in controllers/cuisine.js:
+### Step 22:  Add the corresponding controller.
 ```js
 function index(req, res) {
     Cuisine.find({}, function(err, cuisine) {
@@ -236,10 +208,7 @@ function index(req, res) {
 }
 ```
 ### <br>
-### Step 23:  Use the terminal to create an index view:
-```
-touch views/cuisine/index.ejs
-```
+### Step 23:  Use the terminal to create an 'index' view.
 ### <br>
 ### Step 24:  Add a simple table using ejs in the newly created index.ejs:
 ```html
@@ -294,7 +263,7 @@ table td {
 }
 ```
 ### <br>
-### Step 26:  Change the default 'localhost:3000' landing page to redirect to 'localhost:3000/cuisine' now that it is properly displaying all items.  Do this by changing the route in routes/index.js:
+### Step 26:  Change the default 'localhost:3000' landing page to redirect to 'localhost:3000/cuisine' now that it is properly displaying all items.  Do this by changing the route.
 ```js
 router.get('/', function(req, res, next) {
   res.redirect('cuisine/')
@@ -302,12 +271,12 @@ router.get('/', function(req, res, next) {
 });
 ```
 ### <br>
-### Step 27:  Add a route for the 'Details' button that was just created.  Add the following to routes/cuisine.js:
+### Step 27:  Add a route for the 'Details' button that was just created.
 ```js
 router.get('/:id', cuisineCtrl.show);
 ```
 ### <br>
-### Step 28:  Add the controller for the new route in controllers/cuisine.js:
+### Step 28:  Add the controller for the new route.
 ```js
 function show(req, res) {
     Cuisine.findById(req.params.id, function(err, cuisine){
@@ -320,12 +289,9 @@ function show(req, res) {
 }
 ```
 ### <br>
-### Step 29:  Using the terminal, create a file called show.ejs:
-```
-touch views/cuisine/show.ejs
-```
+### Step 29:  Using the terminal, create a 'show' view page.
 ### <br>
-### Step 30:  Write the HTML/ejs to display the data for an individual item in show.ejs:
+### Step 30:  Write the HTML/ejs to display the data for an individual item in the show view:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -360,7 +326,7 @@ touch views/cuisine/show.ejs
 }
 ```
 ### <br>
-### Step 32:  Add a button to index.ejs to handle deletion:
+### Step 32:  Add a button to handle deletion:
 ```html
 <tr>
     <td><%= c.title %></td>
@@ -374,12 +340,12 @@ touch views/cuisine/show.ejs
 </tr>
 ```
 ### <br>
-### Step 33:  Add the route to handle deletions in routes/cuisine.js:
+### Step 33:  Add the route to handle deletions.
 ```js
 router.post('/:id', cuisineCtrl.delete);
 ```
 ### <br>
-### Step 34:  Add the corresponding controller to controllers/cuisine.js:
+### Step 34:  Add the corresponding controller.
 ```js
 function deleteOne(req, res) {
     Cuisine.findByIdAndDelete(req.params.id, function(err, cuisine){
@@ -399,7 +365,7 @@ function deleteOne(req, res) {
 }
 ```
 ### <br>
-### Step 35:  Add a button in show.ejs to handle updating an item:
+### Step 35:  Add a button to handle updating an item:
 ```html
 <!-- ... -->
 <div class="details-bold">Recipe Link:</div>
@@ -411,12 +377,12 @@ function deleteOne(req, res) {
 </body>
 ```
 ### <br>
-### Step 36:  Add the route to handle showing the update page in routes/cuisine.js:
+### Step 36:  Add the route to handle showing the update page.
 ```js
 router.get('/update/:id', cuisineCtrl.showUpdate);
 ```
 ### <br>
-### Step 37:  Add the corresponding controller in controllers/cuisine.js:
+### Step 37:  Add the corresponding controller.
 ```js
 function showUpdate(req, res) {
     Cuisine.findById(req.params.id, function(err, cuisine) {
@@ -430,10 +396,7 @@ function showUpdate(req, res) {
 }
 ```
 ### <br>
-### Step 38:  Using the terminal, create a new view called update.ejs:
-```
-touch views/cuisine/update.ejs
-```
+### Step 38:  Using the terminal, create an 'update' view.
 ### <br>
 ### Step 39:  Copy the form over from show.ejs to update.ejs, but modify it to auto-populate the values of each field with the current record's info:
 ```html
@@ -478,12 +441,12 @@ touch views/cuisine/update.ejs
 </html>
 ```
 ### <br>
-### Step 40:  Add the POST route to send the record to be updated in routes/cuisine.ejs:
+### Step 40:  Add the POST route to send the record to be updated.
 ```js
 router.post('/update/:id', cuisineCtrl.update);
 ```
 ### <br>
-### Step 41:  Add the corresponding controller in controllers/cuisine.js:
+### Step 41:  Add the corresponding controller.
 ```js
 function update(req, res) {
     console.log(req.body);
