@@ -85,8 +85,13 @@
 
 ### <br>
 ### Step 31:  Add some CSS to clean up the display.
-
 ### <br>
+
+### Step 31.5:  Use npm to install the method-override package:
+### ...then require it in server.js:
+### ...and add it to the middleware:
+### <br>
+
 ### Step 32:  Add a button to handle deletion.
 
 ### <br>

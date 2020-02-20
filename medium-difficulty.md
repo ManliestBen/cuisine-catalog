@@ -327,6 +327,19 @@ function show(req, res) {
 }
 ```
 ### <br>
+### Step 31.5: Use npm to install the method-override package:
+```
+npm i method-override
+```
+### ...then require it in server.js:
+```js
+let methodOverride = require('method-override);
+```
+### ...and add it to the middleware:
+```js
+app.use(methodOverride('_method'));
+```
+### <br>
 ### Step 32:  Add a button to handle deletion:
 ```html
 <tr>
@@ -335,7 +348,7 @@ function show(req, res) {
     <td><a href="http://<%= c.recipeUrl %>">See Recipe</a></td>
     <td><a href="/cuisine/<%= c._id %>">Details</a></td>
     <!-- Add the following form here: -->
-    <form action="/cuisine/<%= c._id %>" method="POST">
+    <form action="/cuisine/<%= c._id %>?_method=DELETE" method="POST">
     <td><button type="submit" class="btn btn-danger">X</button></td>
     </form>
 </tr>
@@ -343,7 +356,7 @@ function show(req, res) {
 ### <br>
 ### Step 33:  Add the route to handle deletions.
 ```js
-router.post('/:id', cuisineCtrl.delete);
+router.delete('/:id', cuisineCtrl.delete);
 ```
 ### <br>
 ### Step 34:  Add the corresponding controller.
@@ -366,7 +379,7 @@ function deleteOne(req, res) {
 <div class="details-bold">Recipe Link:</div>
     <div><%= cuisine.recipeUrl %></div>
     <!-- Add the button here: -->
-    <form action="/cuisine/update/<%= cuisine._id %>">
+    <form action="/cuisine/update/<%= cuisine._id %>?_method=PUT">
         <button type="submit" class="btn btn-warning">Edit</button>
     </form>
 </body>
@@ -374,7 +387,7 @@ function deleteOne(req, res) {
 ### <br>
 ### Step 36:  Add the route to handle showing the update page.
 ```js
-router.get('/update/:id', cuisineCtrl.showUpdate);
+router.put('/update/:id', cuisineCtrl.showUpdate);
 ```
 ### <br>
 ### Step 37:  Add the corresponding controller.
