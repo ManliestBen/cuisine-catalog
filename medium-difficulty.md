@@ -355,13 +355,7 @@ function deleteOne(req, res) {
         console.log('deleting: ' + cuisine);
         }
     })
-    Cuisine.find({}, function(err, cuisine) {
-        if (err) {
-            console.log(err);
-        } else {
-        res.render('cuisine/index', {title: 'Cuisine List', cuisine});
-        }
-    });
+    res.render('/cuisine')
 }
 ```
 ### <br>
@@ -465,13 +459,7 @@ function update(req, res) {
             if (err) {
                 console.log(err);
             } else {
-                Cuisine.find({}, function(err, cuisine) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                    res.render('cuisine/', {title: 'Cuisine List', cuisine});
-                    }
-                });
+                res.redirect('/cuisine')
             }
         })
 }
