@@ -170,6 +170,7 @@ touch views/cuisine/new.ejs
 
         <button type="submit" class="btn btn-success">Add</button>
     </form>
+    
 </body>
 </html>
 ```
@@ -241,7 +242,7 @@ function index(req, res) {
 touch views/cuisine/index.ejs
 ```
 ### <br>
-### Step 24:  Add a simple table using ejs in the newly created index.ejs:
+### Step 24:  Add a button to add, along with a simple table using ejs in the newly created index.ejs:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -273,6 +274,7 @@ touch views/cuisine/index.ejs
             <% }) %>
         </tbody>
     </table>
+    <a href="/cuisine/new">Add Cuisine</a>
 </body>
 </html>
 ```

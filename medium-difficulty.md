@@ -210,7 +210,7 @@ function index(req, res) {
 ### <br>
 ### Step 23:  Use the terminal to create an 'index' view.
 ### <br>
-### Step 24:  Add a simple table using ejs in the newly created index.ejs:
+### Step 24:  Add a button to add, along with a simple table using ejs in the newly created index.ejs:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -242,6 +242,7 @@ function index(req, res) {
             <% }) %>
         </tbody>
     </table>
+    <a href="/cuisine/new">Add Cuisine</a>
 </body>
 </html>
 ```

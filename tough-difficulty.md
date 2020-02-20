@@ -64,7 +64,7 @@
 ### <br>
 ### Step 23:  Use the terminal to create an 'index' view.
 ### <br>
-### Step 24:  Add a simple table using ejs in the newly created index.
+### Step 24:  Add a button to add, along with a simple table using ejs in the newly created index.ejs:
 
 ### <br>
 ### Step 25:  Add some CSS to make it look a little nicer.
