@@ -24,7 +24,7 @@
                     <td><%= c.mealType %></td>
                     <td><a href="http://<%= c.recipeUrl %>">See Recipe</a></td>
                     <td><a href="/cuisine/<%= c._id %>">Details</a></td>
-                    <form action="/cuisine/<%= c._id %>" method="POST">
+                    <form action="/cuisine/<%= c._id %>?_method=DELETE" method="POST">
                     <td><button type="submit" class="btn btn-danger">X</button></td>
                     </form>
                 </tr>
